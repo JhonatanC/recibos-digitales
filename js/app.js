@@ -9,6 +9,7 @@ const setNumRecibo = document.querySelector("#setNumRecibo");
 const setTipoArriendo = document.querySelector("#setTipoArriendo");
 const setFecha = document.querySelector("#setFecha");
 const setRecibi = document.querySelector("#setRecibi");
+const setMonto = document.querySelector("#setMonto");
 const setPago = document.querySelector("#setPago");
 
 const dias = [
@@ -97,6 +98,7 @@ form.addEventListener("submit", (e) => {
   setTipoArriendo.textContent = result.formData.get("type_ticket");
   setFecha.textContent = result.formData.get("fecha");
   setRecibi.textContent = result.formData.get("persona");
+  setMonto.textContent = result.formData.get("amount");
   setPago.textContent = result.formData.get("type_payment");
 });
 
