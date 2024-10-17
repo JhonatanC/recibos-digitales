@@ -1,0 +1,15 @@
+h3 {
+  display: none;
+}
+#page {
+  display: none;
+}
+.container {
+  margin-top: 3rem;
+}
+.required {
+  color: red;
+}
+.field-required {
+  border: 2px solid red;
+}
