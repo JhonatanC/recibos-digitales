@@ -96,11 +96,14 @@ const generatePDF = () => {
   });
   setTimeout(() => {
     // window.location.href = "/" || window.location.host;
-    if (pathName) {
-      window.location.href = getHost + pathName || "/";
+    pathName
+      ? (window.location.href = pathName)
+      : (window.location.href = window.location.host || "/");
+    /*if (pathName) {
+      window.location.href = pathName;
     } else {
       window.location.href = window.location.host || "/";
-    }
+    }*/
   }, 1500);
 };
 
