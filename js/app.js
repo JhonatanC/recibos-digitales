@@ -5,7 +5,6 @@ const container = document.querySelector(".container");
 let btnGenerate = document.getElementById("btn_generate");
 let btnDone = document.getElementById("btn_done");
 let btnBack = document.getElementById("btn_back");
-
 const setNumRecibo = document.querySelector("#setNumRecibo");
 const setTipoArriendo = document.querySelector("#setTipoArriendo");
 const setFecha = document.querySelector("#setFecha");
@@ -15,11 +14,8 @@ const setPago = document.querySelector("#setPago");
 const setAddress = document.querySelector("#setAddress");
 const titleInfo = document.querySelector("#titleInfo");
 const textInfo = document.querySelector("#textInfo");
-
 const getHost = window.location.host;
 const pathName = window.location.pathname;
-console.log(pathName);
-console.log(getHost);
 
 const dias = [
   "Domingo",
@@ -51,7 +47,6 @@ const formatearFecha = (fecha) => {
   const dia = fecha.getDate();
   const mes = meses[fecha.getMonth()];
   const año = fecha.getFullYear();
-  // console.log(`${diaSemana} ${dia} de ${mes} del ${año}`);
   return `${diaSemana} ${dia} de ${mes} del ${año}`;
 };
 
@@ -62,7 +57,6 @@ const afterDate = () => {};
 const validateFields = () => {
   const formData = new FormData(form, btnGenerate);
   let erros = [];
-  // let data = {};
   for (const [key, value] of formData) {
     if (!value.trim()) {
       let field = document.querySelector(`.${key}`);
@@ -71,14 +65,9 @@ const validateFields = () => {
     } else {
       let field = document.querySelector(`.${key}`);
       field.classList.remove("field-required");
-      // data = { [key]: key };
     }
-
     // if (key == "fecha") formatearFecha(new Date());
-    // console.log(`${key}: ${value}\n`);
   }
-
-  // console.log(data);
 
   return {
     ok: erros.length == 0 && true,
@@ -95,25 +84,17 @@ const generatePDF = () => {
     output: `./pdf/${formatearFecha(new Date()).trim()}.pdf`,
   });
   setTimeout(() => {
-    // window.location.href = "/" || window.location.host;
     pathName
       ? (window.location.href = pathName)
       : (window.location.href = window.location.host || "/");
-    /*if (pathName) {
-      window.location.href = pathName;
-    } else {
-      window.location.href = window.location.host || "/";
-    }*/
   }, 1500);
 };
 
 btnBack.addEventListener("click", (e) => {
   e.preventDefault();
-  if (pathName) {
-    window.location.href = "/" || getHost + pathName;
-  } else {
-    window.location.href = "/" || window.location.host;
-  }
+  pathName
+    ? (window.location.href = pathName)
+    : (window.location.href = window.location.host || "/");
 });
 
 form.addEventListener("submit", (e) => {
