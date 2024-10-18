@@ -17,13 +17,13 @@ const titleInfo = document.querySelector("#titleInfo");
 const textInfo = document.querySelector("#textInfo");
 
 const dias = [
+  "Domingo",
   "Lunes",
   "Martes",
   "Miércoles",
   "Jueves",
   "Viernes",
   "Sábado",
-  "Domingo",
 ];
 
 const meses = [
@@ -82,7 +82,7 @@ const validateFields = () => {
 };
 
 const generatePDF = () => {
-  html2PDF(body, {
+  html2PDF(page, {
     jsPDF: {
       format: "a4",
     },
@@ -90,7 +90,7 @@ const generatePDF = () => {
     output: `./pdf/${formatearFecha(new Date()).trim()}.pdf`,
   });
   setTimeout(() => {
-    window.location.href = "/index.html";
+    window.location.href = "/";
   }, 1500);
 };
 
