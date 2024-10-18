@@ -16,6 +16,9 @@ const setAddress = document.querySelector("#setAddress");
 const titleInfo = document.querySelector("#titleInfo");
 const textInfo = document.querySelector("#textInfo");
 
+const getHost = window.location.host;
+const pathName = window.location.pathname;
+
 const dias = [
   "Domingo",
   "Lunes",
@@ -90,9 +93,23 @@ const generatePDF = () => {
     output: `./pdf/${formatearFecha(new Date()).trim()}.pdf`,
   });
   setTimeout(() => {
-    window.location.href = "/";
+    // window.location.href = "/" || window.location.host;
+    if (pathName) {
+      window.location.href = "/" || getHost + pathName;
+    } else {
+      window.location.href = "/" || window.location.host;
+    }
   }, 1500);
 };
+
+btnBack.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (pathName) {
+    window.location.href = "/" || getHost + pathName;
+  } else {
+    window.location.href = "/" || window.location.host;
+  }
+});
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
