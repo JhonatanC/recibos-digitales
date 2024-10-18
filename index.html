@@ -12,96 +12,124 @@
   </head>
   <body id="body">
     <div class="container">
-      <h1>Generador de recibos digitales.</h1>
-      <p>
-        Los campos marcados con (<span class="required">*</span>) son
-        obligatorios:
-      </p>
-      <form id="form">
-        <div class="mb-3">
-          <label for="fecha" class="form-label"
-            >Fecha: <span class="required">*</span></label
-          >
-          <input
-            name="fecha"
-            type="date"
-            class="form-control fecha"
-            id="fecha"
-          />
+      <div class="row justify-content-center">
+        <div class="col-md-9">
+          <h1>Generador de recibos digitales.</h1>
+          <p>
+            Los campos marcados con (<span class="required">*</span>) son
+            obligatorios:
+          </p>
+          <hr />
+          <form id="form">
+            <div class="mb-3">
+              <label for="fecha" class="form-label"
+                >Fecha: <span class="required">*</span></label
+              >
+              <input
+                name="fecha"
+                type="date"
+                class="form-control fecha"
+                id="fecha"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="type_ticket" class="form-label"
+                >Arriendo de: <span class="required">*</span>
+              </label>
+              <select
+                class="form-control type_ticket"
+                name="type_ticket"
+                id="type_ticket"
+              >
+                <option value="Casa">Casa</option>
+                <option value="Garaje">Garaje</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="adress" class="form-label"
+                >Dirección: <span class="required">*</span></label
+              >
+              <input
+                name="address"
+                type="text"
+                class="form-control address"
+                id="address"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="num_recibo" class="form-label"
+                >Número de recibo: <span class="required">*</span></label
+              >
+              <input
+                name="num_recibo"
+                type="number"
+                class="form-control num_recibo"
+                id="num_recibo"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="persona" class="form-label"
+                >Recibí de: <span class="required">*</span></label
+              >
+              <input
+                name="persona"
+                type="text"
+                class="form-control persona"
+                id="persona"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="amount" class="form-label"
+                >Monto recibido: <span class="required">*</span></label
+              >
+              <input
+                name="amount"
+                type="text"
+                class="form-control amount"
+                id="amount"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="type_payment" class="form-label"
+                >Tipo de pago: <span class="required">*</span></label
+              >
+              <select
+                class="form-control type_payment"
+                name="type_payment"
+                id="type_payment"
+              >
+                <option value="Efectivo">Efectivo</option>
+                <option value="Transferencia">Transferencia</option>
+              </select>
+            </div>
+            <button id="btn_generate" type="submit" class="btn btn-primary">
+              Generar PDF
+            </button>
+          </form>
         </div>
-        <div class="mb-3">
-          <label for="type_ticket" class="form-label"
-            >Arriendo de: <span class="required">*</span>
-          </label>
-          <select
-            class="form-control type_ticket"
-            name="type_ticket"
-            id="type_ticket"
-          >
-            <option value="Casa">Casa</option>
-            <option value="Garaje">Garaje</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label for="num_recibo" class="form-label"
-            >Número de recibo: <span class="required">*</span></label
-          >
-          <input
-            name="num_recibo"
-            type="number"
-            class="form-control num_recibo"
-            id="num_recibo"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="persona" class="form-label"
-            >Recibí de: <span class="required">*</span></label
-          >
-          <input
-            name="persona"
-            type="text"
-            class="form-control persona"
-            id="persona"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="amount" class="form-label"
-            >Monto recibido: <span class="required">*</span></label
-          >
-          <input
-            name="amount"
-            type="text"
-            class="form-control amount"
-            id="amount"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="type_payment" class="form-label"
-            >Tipo de pago: <span class="required">*</span></label
-          >
-          <select
-            class="form-control type_payment"
-            name="type_payment"
-            id="type_payment"
-          >
-            <option value="Efectivo">Efectivo</option>
-            <option value="Transferencia">Transferencia</option>
-          </select>
-        </div>
-        <button id="btn_generate" type="submit" class="btn btn-primary">
-          Generar PDF
-        </button>
-      </form>
+      </div>
     </div>
     <!-- default a4's width is 595.28px -->
     <div class="container" id="page">
-      <h1>Confirma los datos ingresados:</h1>
-      <h2>Recibo # <span id="setNumRecibo"></span></h2>
-      <p><strong>Fecha de pago:</strong> <span id="setFecha"></span></p>
-      <p><strong>Arriendo de:</strong> <span id="setTipoArriendo"></span></p>
+      <h1 id="titleInfo">Confirma los datos ingresados:</h1>
+      <p id="textInfo">
+        Al dar click en continuar se generará el pdf y después de unos segundos
+        serás redirigido a la pantalla inicial, procura guardar tú pdf o deverás
+        volverlo a generarlo.
+      </p>
+      <h1>Recibo: Arriendo <span id="setTipoArriendo"></span></h1>
+      <h2>Dirección: <span id="setAddress"></span></h2>
+      <hr />
+      <p>
+        <strong>Recibo #<span id="setNumRecibo"></span></strong>
+      </p>
       <p><strong>Recibí de:</strong> <span id="setRecibi"></span></p>
+      <p><strong>Fecha de pago:</strong> <span id="setFecha"></span></p>
       <p><strong>Valor de:</strong> $<span id="setMonto"></span></p>
       <p><strong>Pago en:</strong> <span id="setPago"></span></p>
+      <a href="/index.html" id="btn_back" class="btn btn-outline-danger"
+        >Regresar</a
+      >
       <button id="btn_done" class="btn btn-success">Continuar</button>
     </div>
 

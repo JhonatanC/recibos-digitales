@@ -4,6 +4,7 @@ const form = document.getElementById("form");
 const container = document.querySelector(".container");
 let btnGenerate = document.getElementById("btn_generate");
 let btnDone = document.getElementById("btn_done");
+let btnBack = document.getElementById("btn_back");
 
 const setNumRecibo = document.querySelector("#setNumRecibo");
 const setTipoArriendo = document.querySelector("#setTipoArriendo");
@@ -11,6 +12,9 @@ const setFecha = document.querySelector("#setFecha");
 const setRecibi = document.querySelector("#setRecibi");
 const setMonto = document.querySelector("#setMonto");
 const setPago = document.querySelector("#setPago");
+const setAddress = document.querySelector("#setAddress");
+const titleInfo = document.querySelector("#titleInfo");
+const textInfo = document.querySelector("#textInfo");
 
 const dias = [
   "Lunes",
@@ -85,6 +89,9 @@ const generatePDF = () => {
     imageType: "image/jpeg",
     output: `./pdf/${formatearFecha(new Date()).trim()}.pdf`,
   });
+  setTimeout(() => {
+    window.location.href = "/index.html";
+  }, 1500);
 };
 
 form.addEventListener("submit", (e) => {
@@ -95,6 +102,7 @@ form.addEventListener("submit", (e) => {
   page.style.display = "block";
 
   setNumRecibo.textContent = result.formData.get("num_recibo");
+  setAddress.textContent = result.formData.get("address");
   setTipoArriendo.textContent = result.formData.get("type_ticket");
   setFecha.textContent = result.formData.get("fecha");
   setRecibi.textContent = result.formData.get("persona");
@@ -104,6 +112,9 @@ form.addEventListener("submit", (e) => {
 
 btnDone.addEventListener("click", (e) => {
   btnDone.style.display = "none";
+  btnBack.style.display = "none";
+  titleInfo.style.display = "none";
+  textInfo.style.display = "none";
   setTimeout(() => {
     generatePDF();
   }, 1000);

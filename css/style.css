@@ -1,11 +1,18 @@
+hr {
+  margin-bottom: 2rem;
+}
 h3 {
   display: none;
 }
 #page {
   display: none;
 }
+#btn_generate {
+  display: block;
+  width: 100%;
+}
 .container {
-  margin-top: 3rem;
+  margin: 3rem auto;
 }
 .required {
   color: red;
