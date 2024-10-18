@@ -18,6 +18,8 @@ const textInfo = document.querySelector("#textInfo");
 
 const getHost = window.location.host;
 const pathName = window.location.pathname;
+console.log(pathName);
+console.log(getHost);
 
 const dias = [
   "Domingo",
@@ -95,9 +97,9 @@ const generatePDF = () => {
   setTimeout(() => {
     // window.location.href = "/" || window.location.host;
     if (pathName) {
-      window.location.href = "/" || getHost + pathName;
+      window.location.href = getHost + pathName || "/";
     } else {
-      window.location.href = "/" || window.location.host;
+      window.location.href = window.location.host || "/";
     }
   }, 1500);
 };
