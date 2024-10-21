@@ -41,6 +41,7 @@
                 name="type_ticket"
                 id="type_ticket"
               >
+                <option value="Apartamento">Apartamento</option>
                 <option value="Casa">Casa</option>
                 <option value="Garaje">Garaje</option>
               </select>
@@ -90,6 +91,18 @@
               />
             </div>
             <div class="mb-3">
+              <label for="life_payment" class="form-label"
+                >Ciclo de pago: <span class="required">*</span></label
+              >
+              <select
+                class="form-control life_payment"
+                name="life_payment"
+                id="life_payment"
+              >
+                <!-- Opciones del mes. -->
+              </select>
+            </div>
+            <div class="mb-3">
               <label for="type_payment" class="form-label"
                 >Tipo de pago: <span class="required">*</span></label
               >
@@ -119,6 +132,7 @@
       </p>
       <h1>Recibo: Arriendo <span id="setTipoArriendo"></span></h1>
       <h2>Dirección: <span id="setAddress"></span></h2>
+      <h4>Ciclo de pago: <span id="setCycle"></span></h4>
       <hr />
       <p>
         <strong>Recibo #<span id="setNumRecibo"></span></strong>
@@ -126,7 +140,7 @@
       <p><strong>Recibí de:</strong> <span id="setRecibi"></span></p>
       <p><strong>Fecha de pago:</strong> <span id="setFecha"></span></p>
       <p><strong>Valor de:</strong> $<span id="setMonto"></span></p>
-      <p><strong>Pago en:</strong> <span id="setPago"></span></p>
+      <p><strong>Tipo de pago:</strong> <span id="setPago"></span></p>
       <a id="btn_back" class="btn btn-outline-danger">Regresar</a>
       <button id="btn_done" class="btn btn-success">Continuar</button>
     </div>

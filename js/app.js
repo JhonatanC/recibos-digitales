@@ -14,6 +14,8 @@ const setPago = document.querySelector("#setPago");
 const setAddress = document.querySelector("#setAddress");
 const titleInfo = document.querySelector("#titleInfo");
 const textInfo = document.querySelector("#textInfo");
+const lifePayment = document.querySelector("#life_payment");
+const setCycle = document.querySelector("#setCycle");
 const getHost = window.location.host;
 const pathName = window.location.pathname;
 
@@ -49,6 +51,19 @@ const formatearFecha = (fecha) => {
   const año = fecha.getFullYear();
   return `${diaSemana} ${dia} de ${mes} del ${año}`;
 };
+
+const getOptionsMeses = () => {
+  for (let index = 0; index < meses.length; index++) {
+    const element = meses[index];
+    const nextElement = index + 1 < meses.length ? meses[index + 1] : meses[0];
+    const option = document.createElement("option");
+    option.value = `${element} - ${nextElement}`;
+    // option.name = `${element} - ${nextElement}`;
+    option.textContent = `${element} - ${nextElement}`;
+    lifePayment.appendChild(option);
+  }
+};
+getOptionsMeses();
 
 const beforeDate = () => {};
 
@@ -104,8 +119,11 @@ form.addEventListener("submit", (e) => {
   container.style.display = "none";
   page.style.display = "block";
 
+  // console.log(result.formData.get("life_payment"));
+
   setNumRecibo.textContent = result.formData.get("num_recibo");
   setAddress.textContent = result.formData.get("address");
+  setCycle.textContent = result.formData.get("life_payment");
   setTipoArriendo.textContent = result.formData.get("type_ticket");
   setFecha.textContent = result.formData.get("fecha");
   setRecibi.textContent = result.formData.get("persona");
